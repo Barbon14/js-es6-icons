@@ -123,32 +123,20 @@ const icons = [
 
 // utilizzo un forEach per generare le icone nella pagina
 const cont = document.getElementById('container');
-icons.forEach((icona) => {
-	cont.innerHTML +=`
-	<div class="icona" style="color: ${icona.color};">
-        <i class="${icona.family} ${icona.prefix}${icona.name}"></i>
-        <span>${icona.name}</span>
-    </div>`
-});
+iconGen(icons);
 
 // uso la funzione filter per estrapolare le icone che mi interessano
 
 // icone degli animali
-const animals = icons.filter((icona) => {
-	return icona.type === 'animal';
-});
+const animals = icons.filter((icona) => icona.type === 'animal');
 console.log(animals);
 
 // icone dei vegetali
-const vegetables = icons.filter((icona) => {
-	return icona.type === 'vegetable';
-});
+const vegetables = icons.filter((icona) => icona.type === 'vegetable');
 console.log(vegetables);
 
 // icone degli utenti
-const users = icons.filter((icona) => {
-	return icona.type === 'user';
-});
+const users = icons.filter((icona) => icona.type === 'user');
 console.log(users);
 
 // aggiungo un selettore per stampare in pagina solo le icone di una determinata categoria
@@ -156,51 +144,39 @@ const filterSelect = document.getElementById('category-select');
 
 filterSelect.addEventListener('input',
 	function () {
+
+		cont.innerHTML = '';
+
 		switch (filterSelect.value) {
 
 			case 'all':
-				cont.innerHTML = '';
-				icons.forEach((icona) => {
-					cont.innerHTML += `
-					<div class="icona" style="color: ${icona.color};">
-						<i class="${icona.family} ${icona.prefix}${icona.name}"></i>
-						<span>${icona.name}</span>
-					</div>`
-				});
+				iconGen(icons);
 			break;
 
 			case 'animals':
-				cont.innerHTML = '';
-				animals.forEach((icona) => {
-					cont.innerHTML += `
-					<div class="icona" style="color: ${icona.color};">
-       					<i class="${icona.family} ${icona.prefix}${icona.name}"></i>
-        				<span>${icona.name}</span>
-    				</div>`
-				});
+				iconGen(animals);
 			break;
 
 			case 'vegetables':
-				cont.innerHTML = '';
-				vegetables.forEach((icona) => {
-					cont.innerHTML += `
-					<div class="icona" style="color: ${icona.color};">
-       					<i class="${icona.family} ${icona.prefix}${icona.name}"></i>
-        				<span>${icona.name}</span>
-    				</div>`
-				});
+				iconGen(vegetables);
 			break;
 
 			case 'users':
-				cont.innerHTML = '';
-				users.forEach((icona) => {
-					cont.innerHTML += `
-					<div class="icona" style="color: ${icona.color};">
-						<i class="${icona.family} ${icona.prefix}${icona.name}"></i>
-						<span>${icona.name}</span>
-					</div>`
-				});
+				iconGen(users);
 			break;
 		}
 	}
 );
+
+// funzioni 
+
+// genera icone
+function iconGen(array) {
+	array.forEach((icona) => {
+		cont.innerHTML += `
+	<div class="icona" style="color: ${icona.color};">
+        <i class="${icona.family} ${icona.prefix}${icona.name}"></i>
+        <span>${icona.name}</span>
+    </div>`
+	});
+}
