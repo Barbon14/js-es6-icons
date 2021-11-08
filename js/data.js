@@ -122,7 +122,7 @@ const icons = [
 ];
 
 // utilizzo un forEach per generare le icone nella pagina
-const cont = document.getElementById('container')
+const cont = document.getElementById('container');
 icons.forEach((icona) => {
 	cont.innerHTML +=`
 	<div class="icona" style="color: ${icona.color};">
@@ -130,3 +130,23 @@ icons.forEach((icona) => {
         <span>${icona.name}</span>
     </div>`
 });
+
+// uso la funzione filter per estrapolare le icone che mi interessano
+
+// icone degli animali
+const animals = icons.filter((icona) => {
+	return icona.type === 'animal';
+});
+console.log(animals);
+
+// icone dei vegetali
+const vegetables = icons.filter((icona) => {
+	return icona.type === 'vegetable';
+});
+console.log(vegetables);
+
+// icone degli utenti
+const users = icons.filter((icona) => {
+	return icona.type === 'user';
+});
+console.log(users);
