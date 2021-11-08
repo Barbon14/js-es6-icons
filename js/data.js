@@ -120,3 +120,13 @@ const icons = [
 		color: 'blue'
 	}
 ];
+
+// utilizzo un forEach per generare le icone nella pagina
+const cont = document.getElementById('container')
+icons.forEach((icona) => {
+	cont.innerHTML +=`
+	<div class="icona" style="color: ${icona.color};">
+        <i class="${icona.family} ${icona.prefix}${icona.name}"></i>
+        <span>${icona.name}</span>
+    </div>`
+});
