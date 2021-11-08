@@ -150,3 +150,57 @@ const users = icons.filter((icona) => {
 	return icona.type === 'user';
 });
 console.log(users);
+
+// aggiungo un selettore per stampare in pagina solo le icone di una determinata categoria
+const filterSelect = document.getElementById('category-select');
+
+filterSelect.addEventListener('input',
+	function () {
+		switch (filterSelect.value) {
+
+			case 'all':
+				cont.innerHTML = '';
+				icons.forEach((icona) => {
+					cont.innerHTML += `
+					<div class="icona" style="color: ${icona.color};">
+						<i class="${icona.family} ${icona.prefix}${icona.name}"></i>
+						<span>${icona.name}</span>
+					</div>`
+				});
+			break;
+
+			case 'animals':
+				cont.innerHTML = '';
+				animals.forEach((icona) => {
+					cont.innerHTML += `
+					<div class="icona" style="color: ${icona.color};">
+       					<i class="${icona.family} ${icona.prefix}${icona.name}"></i>
+        				<span>${icona.name}</span>
+    				</div>`
+				});
+			break;
+
+			case 'vegetables':
+				cont.innerHTML = '';
+				vegetables.forEach((icona) => {
+					cont.innerHTML += `
+					<div class="icona" style="color: ${icona.color};">
+       					<i class="${icona.family} ${icona.prefix}${icona.name}"></i>
+        				<span>${icona.name}</span>
+    				</div>`
+				});
+			break;
+
+			case 'users':
+				cont.innerHTML = '';
+				users.forEach((icona) => {
+					cont.innerHTML += `
+					<div class="icona" style="color: ${icona.color};">
+						<i class="${icona.family} ${icona.prefix}${icona.name}"></i>
+						<span>${icona.name}</span>
+					</div>`
+				});
+			break;
+		}
+	}
+);
